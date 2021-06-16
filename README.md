@@ -1,2 +1,1 @@
-# mytil
-TIL(Today I Learned) 저장소
+# TIL(Today I Learned) 저장소
