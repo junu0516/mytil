@@ -7,6 +7,7 @@
   
 ### 네트워크
 - [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
+- [[2021-06-22] 쿠키와 세션](https://github.com/junu0516/mytil/blob/main/Network/쿠키와_세션.md)
 
 
 
