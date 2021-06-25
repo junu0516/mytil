@@ -12,6 +12,12 @@
 
 
 
+### Java
+
+- [[2021-06-25] JVM의 구조와 동작](https://github.com/junu0516/mytil/blob/main/Java/JVM의_구조와_동작.md)
+
+
+
 ### Spring
 
 - [[2021-06-18] 스프링 DI와 IoC](https://github.com/junu0516/mytil/blob/main/Spring/스프링에서의_DI와_IoC.md)
