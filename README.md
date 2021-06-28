@@ -15,6 +15,7 @@
 ### Java
 
 - [[2021-06-25] JVM의 구조와 동작](https://github.com/junu0516/mytil/blob/main/Java/JVM의_구조와_동작.md)
+- [[2021-06-28] Java의 GC의 동작](https://github.com/junu0516/mytil/blob/main/Java/Java의_GC의_동작.md)
 
 
 
