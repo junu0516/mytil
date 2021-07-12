@@ -47,37 +47,106 @@
 
   - RecursiveAction 클래스를 상속받은 후, __`compute()`__ 를 오버라이딩하여 병렬 처리 내용을 구현
 
-  - 실행 코드
-
-    ```java
-    public class Run {
-    	public static void main(String[] args) {	
-    		RecursiveAction task = new Sum();
-    		new ForkJoinPool().invoke(task);
-    	}
-    }
-    ```
-
   - RecursiveAction 구현 클래스
 
     ```java
-    public class Sum extends RecursiveAction {
-    	int[] input;
-    	int low, high;
-    	int sum;
+    public class RecursiveActionTest extends RecursiveAction {
+    	private long workers = 0;
+        
+        public RecursiveActionTest(long workers){
+            this.workers = workers;
+        }
     	
     	@Override
     	protected void compute() {
-            //병렬처리
-    		sum = 0;
-    		
-    		for(int i=low;i<=high;i++) {
-    			sum += input[i];
-    		}
+            
+            String threadName = Thread.currentThread().getName();
+            if(workers>16){
+                System.out.println("["+LocalDateTime.now()+"]"+threadName+" & Splitting workers : "+ this.workers);
+                sleep(1000);
+            
+                List<RecursiveActionTest> subTasks = new ArrayList<>();
+                subTasks.addAll(createSubTasks());
+    
+                for(RecursiveAction subTask : subTasks){
+                    subTask.fork();
+                }
+            }else{
+                System.out.println("["+LocalDateTime.now()+"]"+threadName+" & Currently running workers : "+ this.workers);
+            }
     	}
+        
+        private List<RecursiveActionTest> createSubTasks(){
+            List<RecursiveActionTest> subTasks = new ArrayList<>();
+            RecursiveActionTest subTask1 = new RecursiveActionTest(this.workers/2);
+            RecursiveActionTest subTask2 = new RecursiveActionTest(this.workers/2);
+            
+            subTasks.add(subTask1);
+            subTasks.add(subTask2);
+            
+            return subTasks;
+        }
+        
+        private void sleep(int mills){
+            try{
+                Thread.sleep(mills);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
     }
     
     ```
-
     
+    - 작업 중간에 쉬도록 __sleep()__ 메소드를 호출하였음.(쉬지 않고 바로 종료되면 병렬처리를 확인하기 힘들기 때문)
+    - __`compute()`__ 는 workers의 크기가 16보다 클 경우에 작업을 subTask로 나누고, 16 이하인 경우에는 나누지 않고 해당 스레드에서 작업을 처리
+    
+    
+    
+  - 실행 클래스
+  
+    ```java
+    public class Run {
+    
+    	public static void main(String[] args) {
+    		
+    		ForkJoinPool forkJoinPool = new ForkJoinPool(4);
+    		
+    		RecursiveActionTest recursiveActionTest = new RecursiveActionTest(128);
+    		forkJoinPool.invoke(recursiveActionTest);
+    		
+    		try {
+    			forkJoinPool.awaitTermination(5, TimeUnit.SECONDS);
+    		}catch(InterruptedException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    }
+    ```
+  
+    - __`ForkJoinPool`__ : Fork/Join Framework를 구현하기 위한 스레드 풀 클래스를 선언
+  
+    - workers 크기가 128인 __`RecursiveAction`__ 객체를 하나 만든 후, __`invoke()`__ 를 통해 생성한 객체를 인자로 전달하여 처리함
+  
+    - 실행하면 아래와 같은 결과가 콘솔에 출력된 것을 확인할 수 있을 것
+  
+      ```java
+      [2021-07-12T23:39:40.265]ForkJoinPool-1-worker-1 & Splitting workers : 128
+      [2021-07-12T23:39:41.275]ForkJoinPool-1-worker-2 & Splitting workers : 64
+      [2021-07-12T23:39:41.275]ForkJoinPool-1-worker-1 & Splitting workers : 64
+      [2021-07-12T23:39:42.276]ForkJoinPool-1-worker-1 & Splitting workers : 32
+      [2021-07-12T23:39:42.276]ForkJoinPool-1-worker-3 & Splitting workers : 32
+      [2021-07-12T23:39:42.277]ForkJoinPool-1-worker-2 & Splitting workers : 32
+      [2021-07-12T23:39:42.277]ForkJoinPool-1-worker-0 & Splitting workers : 32
+      [2021-07-12T23:39:43.280]ForkJoinPool-1-worker-0 & Currently running workers : 16
+      [2021-07-12T23:39:43.280]ForkJoinPool-1-worker-3 & Currently running workers : 16
+      [2021-07-12T23:39:43.280]ForkJoinPool-1-worker-1 & Currently running workers : 16
+      [2021-07-12T23:39:43.280]ForkJoinPool-1-worker-3 & Currently running workers : 16
+      [2021-07-12T23:39:43.280]ForkJoinPool-1-worker-1 & Currently running workers : 16
+      [2021-07-12T23:39:43.280]ForkJoinPool-1-worker-2 & Currently running workers : 16
+      [2021-07-12T23:39:43.280]ForkJoinPool-1-worker-3 & Currently running workers : 16
+      [2021-07-12T23:39:43.280]ForkJoinPool-1-worker-0 & Currently running workers : 16
+      ```
+  
+      
 
