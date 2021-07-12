@@ -149,4 +149,34 @@
       ```
   
       
+  
+  - 만일 비동기적으로 작업을 처리할 경우에는 실행 클래스에서 __`submit()`__  의 인자로 작업을 전달
+  
+    ```java
+    public static void main(String[] args){
+    	ForkJoinPool forkJoinPool = new ForkJoinPool(4);	
+    	RecursiveActionTest recursiveActionTest = new RecursiveActionTest(128);
+        Future<Long> future = forkJoinPool.submit(recursiveActionTest);
+        
+        System.out.println("----------------");
+    	
+        try{
+            System.out.println("mergedResult : "+future.get());
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }catch(ExecutionException e){
+            e.printStackTrace();
+        }
+        
+        try {
+            forkJoinPool.awaitTermination(5,  TimeUnit.SECONDS);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    ```
+  
+    
+  
+  
 
