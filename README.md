@@ -28,8 +28,7 @@
 - [[2021-07-01] 웹서버와 웹어플리케이션서버](https://github.com/junu0516/mytil/blob/main/Network/WS와WAS.md)
 - [[2021-07-03] TCP/IP 4계층-1](https://github.com/junu0516/mytil/blob/main/Network/TCP_IP_4계층.md)
 - [[2021-07-05] TCP/IP 4계층-2](https://github.com/junu0516/mytil/blob/main/Network/TCP_IP_4계층2.md)
-
-
+- [[2021-07-14]Ajax 통신과 JSON](https://github.com/junu0516/mytil/blob/main/Network/Ajax_JSON.md)
 
 
 
