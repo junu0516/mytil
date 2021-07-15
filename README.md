@@ -29,6 +29,7 @@
 - [[2021-07-03] TCP/IP 4계층-1](https://github.com/junu0516/mytil/blob/main/Network/TCP_IP_4계층.md)
 - [[2021-07-05] TCP/IP 4계층-2](https://github.com/junu0516/mytil/blob/main/Network/TCP_IP_4계층2.md)
 - [[2021-07-14]Ajax 통신과 JSON](https://github.com/junu0516/mytil/blob/main/Network/Ajax_JSON.md)
+- [[2021-07-15] JWT 토큰 기반 인증/인가](https://github.com/junu0516/mytil/blob/main/Network/JWT.md)
 
 
 
