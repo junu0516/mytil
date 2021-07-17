@@ -61,12 +61,56 @@ http 프로토콜은 기본적으로 'stateless'한 특징을 가지고 있지�
 ![JSON Web Token Tutorial](https://blog.kakaocdn.net/dn/cxAQfR/btqVJQWEblL/DGGhEbvg7bdDwnS5uHbvI0/img.jpg)
 
 - Json 형식으로 사용자의 속성 정보를 저장해놓은 토큰으로, 그 자체를 정보로 사용하는(__Self-Contained__) 방식으로 정보를 안전하게 전달함
-- JWT 자체는 __`Header`__, __`Payload`__, __`Signature`__의 세부분으로 나뉘며 각 부분은 Base64로 인코딩되어 있으며, __'.'__ 로 각 부분이 구분됨
+
+- JWT 자체는 __`Header`__, __`Payload`__, __`Signature`__ 의 세부분으로 나뉘며 각 부분은 Base64로 인코딩되어 있으며, __'.'__ 로 각 부분이 구분됨
+
   - Base64 자체는 암호화가 아니기 때문에 인코딩된 문자열의 형태는 항상 같음
+
+  
+
 - __Header__
+
   - __`typ`__ 와 __`alg`__ 의 두 가지 정보로 구성되며, 각각 토큰의 타입(ex.JWT)과 __`Signature`__ 을 해싱하기 위한 알고리즘 방식을 의미함
+
+  
+
 - __Payload__
+
   - 토큰에 사옹되는 정보의 조각을 의미하는 __`Claim`__ 이 담겨있으며, __`Claim`__ 은 총 3가지로 나뉘며, JSON 형식으로 여러 정보를 담을 수 있음
-  - __Registered Claim__
-    - 토큰 정보를 표현하기 위해 __이미 정해진 종류의 데이터__ 를 의미
+
+  - __Registered Claim__ : 토큰 정보를 표현하기 위해 __이미 정해진 종류의 데이터__ 를 의미
+
+    - __`iss`__  : 토큰 발급자(issuer)
+    - __`sub`__  : 토큰 제목(subject)
+    - __`aud`__ : 토큰 대상자(audience)
+    - __`exp`__ : 토큰 만료시간(expiration)
+    - __`nbf`__ : 토큰 활성 날짜(not before / nbf 이전의 토큰은 활성화되지 않는 것)
+    - __`iat`__ : 토큰 발급 시간(issued at)
+    - __`jti`__ : JWT 토큰 식별자(중복 방지를 위해 사용됨)
+
+  - __Public Claim__ : 사용자 정의 클레임으로 공개되도 좋은 정보를 위해 사용됨
+
+    - 충돌 방지를 위해 URI 포맷을 아래와 같이 사용함
+
+      ```json
+      {"https://www.naver.com" : true}
+      ```
+
+  - __Private Claim__ : 사용자 정의 클레임으로, 서버-클라이언트 사이에 임의로 지정한 정보가 저장됨
+
+
+
+- __Signature__
+  - 토큰을 인코딩하거나 토큰의 유효성을 검증하기 위해 사용되는 암호화 코드
+  - __`Header`__ 와, __`Payload`__ 를 Base64로 인코딩하면, 인코딩된 값을 비밀 키를 통해 __`Header`__ 의 __`alg`__ 로 정의된 알고리즘으로 해싱한 후, 이를 또 다시 Base64로 인코딩하여 생성 
+    - __`Header`__ __`Payload`__ Base 64 인코딩 -> 정의된 알고리즘으로 해싱 -> 해싱된 값 Base64 인코딩
+  - 최종 생성된 값을 __`Authorization`__ 이라는 key의 value로 JSON에 저장됨
+    - value 앞에는 __`Bearer`__ 을 붙여서 표현 (Bearer + 토큰값)
+
+
+
+- JWT 토큰 인증 방식을 사용할 경우 아래의 단점을 고려해야 함(토큰 기반 인증의 한계일지도..?)
+  - 토큰 자체에 정보를 담고 있는(Self-Contained) 특성이 있지만, __`Payload`__ 와 같은 정보는 암호화되지 않고 단순히 Base64로 인코딩되었기 때문에 통신 과정에서 토큰이 탈취당하면 이를 디코딩하여 정보를 타인이 확인할 수 있음
+  - 토큰 인증 방식은 Stateless한 방식을 구현하기 때문에, 이는 곧 JWT가 한 번 만들어지면 이를 임의로 삭제하는 식으로 제어하는 것이 불가능함을 의미하기 때문에 토큰 만료 시간을 지정할 때 신경써야 함
+  - 발급된 토큰은 클라이언트측에 저장하게 되는데, 여기서 쿠키나 Local Storage 중 어디에 저장해서 보관할 지에 대해서도 신경써야함
 
