@@ -12,13 +12,13 @@
 - [Java](#Java)
 - [Spring](#Spring)
 
-   
+  .. 
 
 ### 운영체제
 
 - [[2021-07-10] 프로세스와 스레드](https://github.com/junu0516/mytil/blob/main/Operating_System/프로세스와_스레드.md)
 
-
+..
 
 ### 네트워크
 - [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
@@ -31,7 +31,7 @@
 - [[2021-07-14]Ajax 통신과 JSON](https://github.com/junu0516/mytil/blob/main/Network/Ajax_JSON.md)
 - [[2021-07-15] JWT 토큰 기반 인증/인가](https://github.com/junu0516/mytil/blob/main/Network/JWT.md)
 
-
+..
 
 ### Java
 
@@ -39,7 +39,9 @@
 - [[2021-06-28] Java의 GC의 동작](https://github.com/junu0516/mytil/blob/main/Java/Java의_GC의_동작.md)
 - [[2021-06-29] synchronized 키워드의 역할](https://github.com/junu0516/mytil/blob/main/Java/synchronized.md)
 - [[2021-07-11] fork/join framework](https://github.com/junu0516/mytil/blob/main/Java/fork_join_framework.md)
-​    
+- [[2021-07-11] 자바 Servlet의 개념](https://github.com/junu0516/mytil/blob/main/Java/servlet.md)    
+
+..
 
 ### Spring
 
