@@ -39,7 +39,7 @@
 - [[2021-06-28] Java의 GC의 동작](https://github.com/junu0516/mytil/blob/main/Java/Java의_GC의_동작.md)
 - [[2021-06-29] synchronized 키워드의 역할](https://github.com/junu0516/mytil/blob/main/Java/synchronized.md)
 - [[2021-07-11] fork/join framework](https://github.com/junu0516/mytil/blob/main/Java/fork_join_framework.md)
-- [[2021-07-11] 자바 Servlet의 개념](https://github.com/junu0516/mytil/blob/main/Java/servlet.md)    
+- [[2021-07-17] 자바 Servlet의 개념](https://github.com/junu0516/mytil/blob/main/Java/servlet.md)    
 
 ..
 

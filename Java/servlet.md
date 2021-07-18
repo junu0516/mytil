@@ -45,5 +45,4 @@
 - 요청을 받으면 Servlet Container은 __`HttpServletRequest`__ , __`HttpServletResponse`__ 객체를 생성하며 미리 선언해둔 __`web.xml`__ 을 기반으로 요청 URL과 적절한 Servlet(혹은 Controller Method)을 매핑
 - 처음 생성시 초기화 메소드( __`init`__ )를 호출하고, 이후 요청이 올 때마다 적절한 메소드( __`doGet`__ 혹은 __`doPost`__ )를 호출
 - 이후 Servlet이 더 이상 필요 없어지면, __`destroy`__ 메소드 호출 후 JVM의 GC를 통해 메모리에서 제거됨
-- 
 
