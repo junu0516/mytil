@@ -50,3 +50,9 @@
 - [[2021-06-21] 스프링 Security의 동작구조](https://github.com/junu0516/mytil/blob/main/Spring/Spring_Security_의_동작구조.md)
 - [[2021-07-04] 스프링 Scheduler](https://github.com/junu0516/mytil/blob/main/Spring/Spring_Scheduler.md)
 
+..
+
+### 기타
+
+- [[2021-07-20] hex string을 pdf로 변환해서 웹에서 보기](https://github.com/junu0516/mytil/blob/main/etc/hex_to_pdf.md)
+
