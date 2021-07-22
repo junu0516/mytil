@@ -81,6 +81,8 @@ public class CustomUserDetailsService implements UserDetailsService{
 
 - 앞서 얘기한대로 아이디, 비밀번호, 인가 관련 정보 외에도 원하는 사용자 정보를 인스턴스로 담아 반환할 수 있음
 
+  - 위의 __`CustomUserDetailsService`__ 에서 원하는 인스턴스에 값을 할당
+
   (lombok 사용을 가정했기 때문에 따로 setter, getter은 명시하지 않았다.)
 
   ```java
@@ -89,24 +91,24 @@ public class CustomUserDetailsService implements UserDetailsService{
   @ToString
   public class CustomUserDetails implements UserDetails{
       
-      private String username;
+  	private String username;
   	private String password;
-      private String additionalInfo1; //세션에 추가할 정보 인스턴스
-      private String additionalInfo2; //세션에 추가할 정보 인스턴스
+  	private String additionalInfo1; //세션에 추가할 정보 인스턴스
+  	private String additionalInfo2; //세션에 추가할 정보 인스턴스
   	private Collection<? extends GrantedAuthority> authorities;
-      
+  
   	@Override
   	public String getUsername() {
-  		return username;
+          return username;
   	}
   
   	@Override
-      public String getPassword() {
-          return password;
-      }
+  	public String getPassword() {
+      	return password;
+  	}
   
-      @Override
-      public boolean isEnabled() {
+  	@Override
+  	public boolean isEnabled() {
           return isEnabled;
       }
   
@@ -132,6 +134,30 @@ public class CustomUserDetailsService implements UserDetailsService{
   }
   ```
 
-  
+  .
+
+  ### SecurityConfig에 CustomUserDetailsService 등록
+
+  ```java
+  @Configuration
+  @EnableWebSecurity
+  public class SecurityConfig extends WebSecurityConfigurerAdapter{
+  	
+      private CustomUserDetailsService customUserDetailsService;
+      
+      @Autowired
+      public SecurityConfig(CustomUserDetailsService customUserDetailsService){
+          this.customUserDetailsService = customUserDetailsService;
+      }
+      
+      ...
+      @Override
+      protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+          //CustomUserDetailsService를 등록
+      	auth.userDetailsService(customUserDetailsService);    
+      }
+      
+  }
+  ```
 
   
