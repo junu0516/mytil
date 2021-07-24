@@ -17,7 +17,7 @@
 ### 운영체제
 
 - [[2021-07-10] 프로세스와 스레드](https://github.com/junu0516/mytil/blob/main/Operating_System/프로세스와_스레드.md)
-- [[2021-07-24] 프로세스와 스레드](https://github.com/junu0516/mytil/blob/main/Operating_System/교착상태.md)
+- [[2021-07-24] 프로세스의 교착상태](https://github.com/junu0516/mytil/blob/main/Operating_System/교착상태.md)
 
 ..
 
