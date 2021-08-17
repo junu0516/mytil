@@ -19,15 +19,18 @@
 
 - [RecursiveAction 공식문서](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/RecursiveAction.html)
 
-```markdown
- 자바에서 병렬처리를 하고자 할 경우에는, 보통 스레드를 별도로 만들면 된다. 하지만 스레드를 생성하고 제거하는 작업 또한 오버헤드가 크기 때문에, 오히려 이로 인해 시간이 더 걸릴 수 있다. 
- 
- 그렇다면 스레드의 개수를 일정하게 유지하면서, 별도로 작업 큐를 통해 작업 목록을 관리해보는 방식을 생각해볼 수 있겠지만, 이 또한 작업 큐에 대한 접근에서의 경쟁으로 인해 시간이 더 걸릴 수 있다.
- 
- 따라서 이런 경우에 일정 개수의 스레드를 유지하면서, 스레드마다 독립적으로 작업 큐를 관리하고 하나의 스레드의 작업 큐가 빌 경우에 다른 스레드의 작업 큐에서 작업을 가져오면 좀 더 효율적인 병렬처리가 가능할 것이다.
-```
 
-...
+
+### Thread vs Thread Pool
+
+![Thread pool(쓰레드 풀)](https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F991DC8475BCD133D20)
+
+- 스레드를 생성할 경우 동일한 메모리 영역 내에서 관리되기 때문에, 단일 프로세스만을 사용하는 것보다 성능 면에서 더욱 빠른 속도를 기대할 수 있음
+- 하지만 멀티 스레딩 구조에서, 스래드의 생성 및 수거 또한 일정한 비용을 수반하기 때문에 이를 고려해야 함
+- 따라서 스레드의 생성 및 수거에 드는 비용을 줄이고, 스레드의 재사용성을 높이기 위해 별도의 __`Thread Pool`__ 을 만들어 놓는 것
+- 병렬 처리시 작업 큐(Queue)에 있는 작업을 미리 지정한 풀의 스레드들이 하나씩 맡아 처리하며, 작업의 수가 많아져도 스레드의 수는 일정하기 때문에 성능이 스레드의 생성 및 수거로 인해 성능이 저하되는 상황을 방지할 수 있음!
+
+.
 
 ### Fork-Join Framework
 
@@ -37,6 +40,16 @@
 
   - __`join`__ 은 좀 더 쉽게 말해, 스레드들이 작업을 처리할 때까지 기다린 후, 처리 결과를 합치는 것을 의미
   - Child Level에서의 처리 결과를 합쳐 상위 Parent Level로 전달
+  - 특별한 점은, 작업이 __`Thread Pool`__ 내의 여러 __`Worker Thread`__ 로 분배될 때, 특정 __Worker Thread__ 가 처리할 작업이 없을 경우에는, 다른 __Worker Thread__ 로부터 치할 작업을 훔쳐와서(__`Work-Strealing`__) 처리함
+
+  .
+
+- 자바 코드로 스레드 풀을 구현할 때는 __`ForkJoinPool`__ 클래스를 활용하며, 이는 __`ExecutorService`__ 를 구현한 __`AbstractExecutorService`__ 추상 클래스를 상속받고 있음([공식문서](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ForkJoinPool.html))
+
+  - 위에서 언급했듯이 다른 __`ExecutorService`__ 구현체와 달리, __`Work-Strealing`__ 알고리즘이 적용되었다는 차이가 있음
+  - 
+
+  .
 
 - 자바 코드로 구현시 각각의 __Task__ 를 나타내는 클래스는 __`RecursiveAction`__ 과 __`RecursiveTask`__ 가 존재
 
