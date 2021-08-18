@@ -12,14 +12,14 @@
 - [Java](#Java)
 - [Spring](#Spring)
 
-  .. 
+  .
 
 ### 운영체제
 
 - [[2021-07-10] 프로세스와 스레드](https://github.com/junu0516/mytil/blob/main/Operating_System/프로세스와_스레드.md)
 - [[2021-07-24] 프로세스의 교착상태](https://github.com/junu0516/mytil/blob/main/Operating_System/교착상태.md)
 
-..
+.
 
 ### 네트워크
 - [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
@@ -41,8 +41,9 @@
 - [[2021-06-29] synchronized 키워드의 역할](https://github.com/junu0516/mytil/blob/main/Java/synchronized.md)
 - [[2021-07-11] fork/join framework](https://github.com/junu0516/mytil/blob/main/Java/fork_join_framework.md)
 - [[2021-07-17] 자바 Servlet의 개념](https://github.com/junu0516/mytil/blob/main/Java/servlet.md)    
+- [[2021-08-18]자바 Stream](https://github.com/junu0516/mytil/blob/main/Java/stream.md)
 
-..
+.
 
 ### Spring
 
@@ -52,7 +53,7 @@
 - [[2021-07-22] UserDetailsService를 원하는 방식대로 수정하기](https://github.com/junu0516/mytil/blob/main/Spring/CustomUserDetailsService.md)
 - [[2021-07-04] 스프링 Scheduler](https://github.com/junu0516/mytil/blob/main/Spring/Spring_Scheduler.md)
 
-..
+.
 
 ### 기타
 
