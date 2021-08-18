@@ -46,8 +46,33 @@
 
 - 자바 코드로 스레드 풀을 구현할 때는 __`ForkJoinPool`__ 클래스를 활용하며, 이는 __`ExecutorService`__ 를 구현한 __`AbstractExecutorService`__ 추상 클래스를 상속받고 있음([공식문서](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ForkJoinPool.html))
 
-  - 위에서 언급했듯이 다른 __`ExecutorService`__ 구현체와 달리, __`Work-Strealing`__ 알고리즘이 적용되었다는 차이가 있음
-  - 
+  - __`ExecutorService`__ 는 Java에서 병렬처리시 Thread Pool의 생성을 위해 제공되는 인터페이스이며, ForkJoinPool 외에도, Java 1.5 이후로 제공되는 __`CachedThreadPool`__ , __`FixedThreadPool`__ , __`SingleThreadExecutor`__ 등이 ExecutorService의 구현체들임
+    - 여기서 구현체들이 작업을 처리하는 방식은 __`Runnable`__ 혹은 __`Callable`__ 객체를 가지고 각각 __`run()`__ 혹은 __`call()`__ 메소드를 실행함으로써 이루어짐(리턴값의 유무로 둘을 구분)
+
+    - __`Runnable`__ 의 경우 리턴값이 없으며(void), __`execute()`__ 를 통해 작업큐에 저장하여 작업의 처리를 요청하고 예외 발생시에는 해당 스레드가 종료되고, 스레드풀은 새로운 스레드를 생성하여 다른 작업을 처리함
+
+    - __`Callable`__ 의 경우 리턴값이 존재하며 __`submit()`__ 을 통해 작업큐에 저장하여 작업의 처리를 요청하고 예외가 발생하더라도 스레드는 수거되지 않고 다음 작업의 처리에 활용됨
+
+    - __`Callable`__ 의 리턴값으로 __`Future`__ 이 사용되며, 이는 __리턴값이 존재하는 비동기 처리 결과를 표현하기 위해 사용되며,__  결과값을 얻기 위해서는 __`get()`__ 메소드를 사용하고 이는 비동기 연산이 끝날 때까지 blocking 된다는 특징이 있음
+
+      ```tex
+      <공식문서 설명>
+      get : Waits if necessary for the computation to comoplete, and then retrieves its result.
+      
+      cancel : Attempts to cancel executino of this task
+      ```
+
+      > ### Future
+      >
+      > [공식문서](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html)
+      >
+      > 보통 Future은 Paralell Programming 에서 비동기 처리 결과를 담는 구조체 개념으로 사용되며,  자바에서는 1.5 이후 제공되는 __Future<V>__ 인터페이스의 구현을 통해 비동기 연산 결과를 얻거나 다른 스레드에서 리턴한 값을 메인 스레드가 얻고자 할 때 활용함
+
+    .
+
+  - 위에서 언급했듯이 다른 __`ExecutorService`__ 구현체와 달리, 놀고 있는 스레드가 작업 중인 스레드의 작업을 일부 가져오는 __`Work-Strealing`__ 알고리즘이 적용되었다는 차이가 있음
+
+  - ForkJoinPool이 항상 정답은 아니지만,  빈번한 스레드의 생성 및 수거가 수반되는 멀티스레딩인 경우에는 미리 Thread Pool의 사이즈가 고정되고, 재사용성을 높이고자 하기 때문에 최적의 대안이 되는 것
 
   .
 
@@ -81,13 +106,15 @@
 
   - __RecursiveTask__ : 리턴값이 존재하는 작업으로 RecursiveAction과 달리 __`compute()`__ 의 리턴타입이 void가 아님
 
+    - 앞서 언급한 리턴값이 존재하는 __`Future Task`__ 의 경우 RecursiveTask를 상속받아 구현하는 것 
+  
     ```java
     
     public abstract class RecursiveTask<V> extends ForkJoinTask<V> {
         private static final long serialVersionUID = 5232453952276485270L;
         V result;
     
-        protected abstract V compute();
+        protected abstract V compute(); //RecursiveAction과 달리 non-void
     	
         public final V getRawResult() {
             return result;
@@ -108,7 +135,7 @@
     
 
   - __RecursiveAction__ , __RecursiveTask__ 의 구조를 보면 둘 다 __`ForkJoinTask<V>`__ 클래스를 다시 구현하고 있음을 알 수 있음(클래스 구조가 너무 길어서 여기서는 생략...)
-
+  
     - __`ForkJoinPool`__ 에서 수행되는 작업을 위한 추상클래스로 [공식문서](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveAction.html) 를 보면 이 클래스에 __`fork()`__ , __`join()`__ 등의 비동기처리를 위한 주요 메소드가 정의되있음을 알 수 있음
     - __fork()__ : 작업 분배를 위한 메소드
       - Arranges to asynchronously execute this task in the pool the current task is running in, if applicable, or using the [`ForkJoinPool.commonPool()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinPool.html#commonPool--) if not [`inForkJoinPool()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinTask.html#inForkJoinPool--).
@@ -119,7 +146,7 @@
       - 여기서 __`isDone()`__ 은 상위 추상클래스인 __`Future`__ 클래스에 정의된 메소드로, 작업의 연산이 끝나면 true를 리턴함
       - 따라서 join()은 위에서 처리 결과를 합친다는 join 명령의 개념과 유사하게, 분기된 각 작업의 연산이 끝나면 연산 결과를 리턴하며 이러한 연산 결과가 연속적으로 합쳐지는 것
     - __invoke()__ :  미리 정의된 스레드풀에 작업을 던져서 순차적으로 작업을 fork 하는 것
-
+  
     
 
 ### RecursiveAction 을 활용한 병렬처리 예제
@@ -254,3 +281,9 @@
     ```
 
     - 최초에 정의한 작업의 workers 크기는 128이었고, 이를 2개 -> 4개 -> 8개로 각각 분기한 것
+
+.
+
+### RecursiveTask를 활용한 병렬처리 예제
+
+- 
