@@ -148,7 +148,7 @@
     - __invoke()__ :  미리 정의된 스레드풀에 작업을 던져서 순차적으로 작업을 fork 하는 것
   
     
-
+.
 ### RecursiveAction 을 활용한 병렬처리 예제
 
 - RecursiveAction 클래스를 상속받은 후, __`compute()`__ 를 오버라이딩하여 병렬 처리 내용을 구현해보자
