@@ -8,6 +8,12 @@
 
 .
 
+[참고 블로그](https://mangkyu.tistory.com/114)
+
+[Java stream 공식문서](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html)
+
+.
+
 ### 람다(Lambda) 사용법
 
 - 람다 함수는 익명 함수(Anonymous Function)를 지칭하는 용어로, 쉽게 말해 따로 메소드를 만들 필요 없이 코드 한줄로 함수를 만들어 호출하는 것
