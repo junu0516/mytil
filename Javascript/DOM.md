@@ -43,7 +43,7 @@
     </html>
     ```
 
-    - 위의 html은 <head> 와 <body> 태그를 각각 빠뜨렸지만, 브라우저는 이를 교정하기 때문에 DOM Tree에는 최종적으로 올바른 노드 구조가 나타나게 될 것
+    - 위의 html은 head 와 body 태그를 각각 빠뜨렸지만, 브라우저는 이를 교정하기 때문에 DOM Tree에는 최종적으로 올바른 노드 구조가 나타나게 될 것
     - __따라서 DOM은 굳이 얘기하면 유효한 형태의 HTML이라 할 수 있을 것__
 
   - 또한, Javascript 코드로 DOM을 조작하는 코드가 존재한다고 해서 html을 변경하는 것은 아님
@@ -122,7 +122,7 @@
 ![렌더링 트리 생성, 레이아웃 및 페인트 | Web | Google Developers](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/render-tree-construction.png?hl=ko)
 
 - 브라우저가 html을 읽어 DOM을 생성하면, CSS를 병합하여 CSSOM을 생성(CSS 객체모델)
-- 위의 CSSOM 그림을 간단히 해석하면, <body> 태그 요소에 대해 폰트 사이즈를 18px로 지정하면 하위 모든 노드에 대해서 동일한 스타일이 적용된다는 것을 의미
+- 위의 CSSOM 그림을 간단히 해석하면, body 태그 요소에 대해 폰트 사이즈를 18px로 지정하면 하위 모든 노드에 대해서 동일한 스타일이 적용된다는 것을 의미
 - DOM 과 CSSOM이 합쳐지면 최종적으로 브라우저에 표시될 __`Render Tree`__ 가 완성됨!
   - Render Tree 그림을 보면 DOM Tree와 달리 body만 들어가 있는 것을 볼 수 있음
   - HTML의 head 노드 하위는 사용자 눈에 보이지 않기 때문
@@ -142,5 +142,5 @@
 - Render Tree를 참고하여 브라우저상의 위치 및 크기를 어떻게 보여줄 지 결정하는 것이 layout
 -  좀 더 간단히 표현하면, DOM+CSSOM = Render Tree 의 과정은 __`Construction`__ 이 되며, Render Tree를 브라우저에 최종적으로 표시하는 과정은 __`Operation`__ 으로 나타낼 수 있음
 - 위의 랜더링 순서를 통해 DOM, CSS 선언 등의 수가 적을 수록 Render Tree의 크기가 작아지기 때문에 속도가 더욱 빨라질 것임을 유추할 수 있음
-- __따라서 프론트엔드 개발시 불필요한 <div> 나 쓸 데 없는 wrapping 용도의 요소를 선언하는 것을 지양__
+- __따라서 프론트엔드 개발시 불필요한 div 태그 나 쓸 데 없는 wrapping 용도의 요소를 선언하는 것을 지양__
 
