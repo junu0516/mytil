@@ -7,22 +7,12 @@
 
 
 
-- [운영체제](#운영체제)
-
-- [네트워크](#네트워크)   
-
-- [Java](#Java)
-
-- [Spring](#Spring)
-
-  .
-
 ### 운영체제
 
 - [[2021-07-10] 프로세스와 스레드](https://github.com/junu0516/mytil/blob/main/Operating_System/프로세스와_스레드.md)
 - [[2021-07-24] 프로세스의 교착상태](https://github.com/junu0516/mytil/blob/main/Operating_System/교착상태.md)
 
-.
+<br>
 
 ### 네트워크
 
@@ -47,7 +37,7 @@
 - [[2021-07-17] 자바 Servlet의 개념](https://github.com/junu0516/mytil/blob/main/Java/servlet.md)    
 - [[2021-08-18]자바 Stream](https://github.com/junu0516/mytil/blob/main/Java/stream.md)
 
-.
+<br>
 
 ### Spring
 
@@ -57,7 +47,7 @@
 - [[2021-07-22] UserDetailsService를 원하는 방식대로 수정하기](https://github.com/junu0516/mytil/blob/main/Spring/CustomUserDetailsService.md)
 - [[2021-07-04] 스프링 Scheduler](https://github.com/junu0516/mytil/blob/main/Spring/Spring_Scheduler.md)
 
-.
+<br>
 
 ### Javascript & Front-End
 
@@ -65,11 +55,12 @@
 - [[2021-08-30] DOM, CSSOM, RenderTree](https://github.com/junu0516/mytil/blob/main/Javascript/DOM.md)
 - [[2021-09-07]Event 간단히 알아보기](https://github.com/junu0516/mytil/blob/main/Javascript/event.md)
 - [[2021-09-22]자바스크립트 함수 호출 및 메모리 구조](https://github.com/junu0516/mytil/blob/main/Javascript/function.md)
-.
+
+<br>
 
 ### 기타
 
 - [[2021-07-20] hex string을 pdf로 변환해서 웹에서 보기](https://github.com/junu0516/mytil/blob/main/etc/hex_to_pdf.md)
 
-- [[방통대 강의록 정리]C++ 프로그래밍](https://github.com/junu0516/mytil/blob/main/C++/C++.md)
+- [[방통대 강의록 정리]C++ 프로그래밍](https://github.com/junu0516/mytil/blob/main/C%2B%2B/c%2B%2B.md)
 
