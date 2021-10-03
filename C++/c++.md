@@ -47,7 +47,7 @@ int main(){
 
 <br>
 
-### 1-3 명칭공간
+### 1-3 명칭공간(namespace)
 
 - 특정한 이름들이 인식되는 프로그램의 부분을 말하며, 동일한 명칭이라도 서로 다른 명칭공간에 정의되어 있다면 별개의 것으로 구분함
 - 여러 프로그래머가 협업시 각자의 필요에 따라 독립적으로 명칭공간을 만들어 사용할 수 있음
@@ -185,4 +185,294 @@ constexpr int fac(int n){
 |      ^      |   대응되는 비트가 서로 다르면 1을 반환함. (비트 XOR 연산)    |
 |     <<      | 지정한 수만큼 비트들을 전부 왼쪽으로 이동시킴. (left shift 연산) |
 |     >>      | 지정한 수만큼 비트들을 전부 오른쪽으로 이동시킴. (right shift 연산) |
+
+<br>
+
+### 2-5. 자료형의 변환
+
+- __묵시적 형변환__
+
+  - 우선순위가 낮은 자료형의 값이 높은 자료형의 값과 동일하게 자동적으로 변환되는 것으로 __연산자 단위로 이루어짐__
+  - 대입연산자( __`=`__ ) 를 사용할 경우 저장할 변수의 자료형으로 묵시적 형변환이 이루어짐
+    - 실수 -> 정수로의 변환에서 오는 오차 발생이나 데이터의 오버플로우가 발생할 수 있음으로 주의
+
+  ```c++
+  intVar = doubleVar + intVar * floatVar;
+  
+  /*
+  	1. intVar*floatVar : float으로 자동으로 형변환
+  	2. doubleVar + (float) : double로 자동으로 형변환
+  	3. 연산 결과로 얻은 double은 변수 타입에 따라 int로 형변환
+  */
+  ```
+
+- __명시적 형변환__
+
+  - __`static_cast`__ : 실행 중에 형 검사를 하지 않으며 컴파일 할 때 수식에 지정된 그대로 변환
+  - __`dynamic_cast`__ : 기초 클래스나 파생 클래스 간의 포인터 또는 참조 형변환이 프로그램의 실행 중에 일어나도록 지시
+  - __`reinterpret_cast`__ : 포인터를 자른 자료형의 포인터나 정수 자료형으로, 또는 역으로 변환
+  - __`const_cast`__ : const 지정을 일시적으로 해제
+
+  ```c++
+  static_cast<int>(n/10.0);
+  
+  /*
+  static_cast : 형변환 연산자
+  <int> : 변환하고자 하는 목표 자료형
+  (n/10.0) : 형 변환 대상 수식
+  */
+  ```
+
+<br>
+
+## 3. C++ 언어 기초(3)
+
+### 3-1. 흐름제어 구문
+
+- __조건문__ : __`if`__ , __`switch`__ 와 같이 조건에 따라 실행의 흐름을 제어하는 문장
+- __반복문__ : __`for`__ , __`while`__ , __`do while`__ 과 같이 정해진 범위의 문장을 반복적으로 실행하도록 하는 문장
+  - __`for`__ 의 경우 __for( 초기화문장 ; 반복조건 ; 증감문장 )__ 의 형식으로 사용
+  - 혹은 __for(개별 원소 : 데이터 집합)__ 의 for each 구문으로도 사용 가능
+
+<br>
+
+### 3-2. 구조체와 클래스
+
+- __구조체__
+  - 여러 가지 자료형의 데이터 집합을 저장할 수 있는 새로운 자료형을 정의
+
+```c++
+//구조체 사용 예시
+struct Coordinates{
+    double x,y; //2차원 좌표 x와 y 변수를 담고 있는 구조체
+};
+
+struct Circle{
+    Coordinates center; //중심 좌표를 나타낼 구조체 변수
+    double radius; //반지름을 나타낼 변수
+}
+
+//Circle 구조체를 파라미터로 받아 면적을 구하는 함수
+double getCircleAreaValue(Circle c){
+    
+    return c.radius * c.radius * PI;
+}
+```
+
+<br>
+
+- __클래스__
+  - 단순히 인스턴스만을 나열한 것이 아닌, 표현 대상이 어떤 행위를 할 수 있는 지와 어떤 데이터를 저장하는 지(속성)를 하나의 큰 단위로 묶어서 선언한 것
+  - 행위는 메소드로, 속성은 가지고 있는 데이터로 나타낼 수 있음
+  
+- 클래스 사용 예시
+  - Circle.h : 멤버 변수와 함수를 선언
+  
+  ```c++
+  struct Coordinates{
+      double x,y; //2차원 좌표 x와 y 변수를 담고 있는 구조체
+  };
+  
+  class Circle{
+      //속성(멤버 변수)
+      Coordinates center; //중심 좌표를 나타낼 구조체 변수
+      double radius; //반지름을 나타낼 변수
+      
+      //행위(멤버 함수)
+  	public:
+     	 	void init(double x, double y, double r);
+      	double area() const;
+          bool checkOverLap(const Circle& c) const;
+  		void display() const;
+  };
+  ```
+  
+  - Circle.cpp : 선언된 함수의 내용을 정해줌
+  
+  ```c++
+  #include "Circle.h"
+  #include <cmath>
+  #include <iostream>
+  using namespace std;
+  
+  void Circle::init(double x, double y, double r)
+  {
+      center.x = x;
+      center.y = y;
+      radius = r;
+  }
+  
+  double Circle::area() const
+  {
+      return radius * radius * 3.14;
+  }
+  
+  bool Circle::checkOverLap(const Circle& c) const
+  {
+      double dx = center.x - c.center.x;
+      double dy = center.y - c.center.y;
+      double dCntr = sqrt(dx*dx + dy*dy);
+      return dCntr < radius + c.radius;
+  }     
+  
+  void Circle::display() const{
+      cout << "반지름 : " << radius
+           << " / 중심 : (" << center.x << "," << center.y << ") /"
+           << " 넓이 : " << this->area() << endl;
+  }        
+  ```
+  
+  - main.cpp
+  
+  ```c++
+  #include <iostream>
+  #include <stdio.h>
+  #include "Circle.h"
+  
+  using namespace std;
+  
+  
+  int main(){
+      cout << "원의 면적 구하기" << endl;
+      Circle c1, c2;
+      c1.init(0,0,10);
+      c2.init(30,10,5);
+      
+      c1.display();
+      c2.display();
+      
+      if(c1.checkOverLap(c2)){
+          cout << "두 원은 서로 중첩입니다." << endl;
+      }else{
+          cout << "두 원은 서로 중첩이 아닙니다." << endl;
+      }
+      
+      return 0;
+  }
+  
+  /*
+  출력결과 :
+  -------------------------------------------
+  원의 면적 구하기
+  반지름 : 10 / 중심 : (0,0) / 넓이 : 314
+  반지름 : 5 / 중심 : (30,10) / 넓이 : 78.5
+  두 원은 서로 중첩이 아닙니다.
+  -------------------------------------------
+  */
+  ```
+
+<br>
+
+### 3-3. 배열
+
+- 동일한 자료형의 값을 여러 개 저장할 수 있는 연속적으로 할당된 공간을 하나의 변수로 묶어 할당한 것
+- 배열의 index는 다른 프로그래밍 언어와 마찬가지로 0부터 시작함
+
+```c++
+//1차원 배열 선언
+float floatArr[4]; //크기 4인 배열 선언
+for(int i=0;i<4;i++){
+    floatArr[i] = i;
+}
+```
+
+- 배열 선언시 크기를 나타내는 __`[]`__ 이 늘어날수록 다차원 배열을 표현
+
+<br>
+
+### 3-4. 포인터와 동적 메모리의 할당
+
+- __포인터__
+
+  - 변수, 구조체, 객체 등 값이 저장된 메모리상의 위치를 가리키는 변수
+
+  - 포인터의 선언은 __`*`__ 을 붙여서 나타냄
+
+    ```c++
+    int *iPtr; //int형 변수의 메모리 위치를 가리키는 포인터 변수
+    ```
+
+- 포인터 활용 예시
+
+  ```c++
+  #include <iostream>
+  using namespace std;
+  
+  int main()
+  {
+      int a = 10; //int 변수 선언
+      int *ptr; //int형 포인터 변수의 선언
+      
+      ptr = &a; //포인터 변수 ptr에 변수 a의 메모리상의 주소를 할당
+      cout << "포인터 값 : " << *ptr << endl; // 포인터가 가리키는 변수 a의 값인 10을 출력하게 됨
+      
+      *ptr = 20; // 포인터가 가리키는 변수 a에 값 20을 할당
+      cout << "변수 a의 값 : " << a << endl; //20을 출력하게 됨
+      return 0;
+  }
+  ```
+
+- __동적 메모리 할당__
+
+  - 프로그램의 동작 중에 메모리 공간의 필요성 및 소요량 등을 결정하여 필요한 공간을 할당하는 것
+  - 포인터 변수가 할당된 메모리 공간을 가리키도록 함
+  - 메모리 공간의 할당은 __`new`__ 키워드의 선언 시점에 이루어지며, 이후 __`delete`__ 키워드의 실행 시점에 소멸하게 됨
+  - 정확히는 new의 선언과 함께 __Heap 영역의 일정한 메모리 공간을__ 할당하게 되고, 할당된 메모리 공간의 주소값을 __Stack 영역에 위치한 포인터 변수에__ 할당시키는 것
+
+  ```c++
+  #include <iostream>
+  using namespace std;
+  
+  int main()
+  {
+      int *intPtr;
+      intPtr = new int; //intPtr 포인터 변수에 4바이트만큼 heap 공간 할당
+      *intPtr = 10; //할당된 공간에 10이란 int 값을 할당
+      
+      //값 출력해서 확인해보기
+      cout << "메모리 주소 : " << (void*)intPtr << endl; //메모리 주소값 출력
+      cout << "할당된 값 : " << *intPtr << endl; //할당된 값 10 출력
+     	delete intPtr; //메모리 공간 반납 
+  }
+  ```
+
+  <br>
+
+### 3-5. 참조(Reference)
+
+- 어떤 대상을 가리키는 값을 말하며 포인터 개념과 유사함
+
+- __`&`__ 를 사용하여 참조 변수를 표현
+
+  ```c++
+  int a = 10, b = 20;
+  int &aRef = a; //참조변수 aRef는 a 변수를 가리킴
+  aRef = 100; //aRef가 참조하는 변수 a에 100을 할당
+  aRef = b; //aRef가 변수 b를 참조하는 것이 아니라, b에 할당된 값 20을 변수 a에 할당
+  ```
+
+- __`const`__ 선언을 통해, 참조 대상의 값을 바꿀 수 없도록 할 수 있음
+
+  ```c++
+  int x {10}; //변수 x에 값 10 할당
+  const int &xRef = x; //참조변수 xRef가 참조하는 변수 x의 값ㅇ르 바꿀 수 없음
+  xRef = 20; //오류 발생
+  ```
+
+- 참조변수와 포인터의 차이
+  - 일반 변수의 사용과 동일하게 값을 읽거나 저장할 수 있음
+  - 참조변수는 반드시 최초 선언시 초기화를 통해 어떤 대상을 참조해야 함
+  - 초기화를 통해 지정된 참조 대상을 바꿀 수 없으며, 참조 변수가 유효한 동안에는 하나의 대상만을 참조할 수 있음
+
+<br>
+
+## 4. 함수(Function)
+
+### 4-1. 함수의 정의와 호출
+
+### 4-2. 인수의 전달
+
+### 4-3. 함수의 다중정의
+
+### 4-4. Inline 함수
 
