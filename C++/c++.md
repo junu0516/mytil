@@ -608,7 +608,401 @@ for(int i=0;i<4;i++){
 
 <br>
 
-### 4-3. 함수의 다중정의
+### 4-3. 함수의 다중정의(Overloading)
+
+- 함수의 오버로딩 : 동일한 이름을 가진 여러 개의 함수가 정의되는 것을 의미
+
+- 함수의 다중 정의는 __인수(파라미터)의 개수와 자료형__ 의 차이로 구분
+
+  - __리턴값의 자료형으로는 구분할 수 없음__
+
+  ```c++
+  //아래와 같은 경우는 오버로딩이 될 수 없음(모호한 상황)
+  
+  void func(int a){
+      //함수 내용
+  }
+  
+  void func(int a, int b=100){
+      //함수 내용
+  }
+  
+  int main(){
+      /*
+      	파라미터의 수는 다르지만, 자료형에 차이가 있기 때문에 모호한 것
+      */
+      func(10);
+      func(10,20);
+  }
+  ```
+
+<br>
 
 ### 4-4. Inline 함수
+
+- 인라인 함수 : __일반적인 함수의 호출 절차를 따르지 않고, 함수 호출 위치에 함수 처리 문장이 삽입되게 번역하도록 선언된 함수__
+
+- 함수 사용을 통한 모듈화의 장점을 살리면서, 함수 호출에 따른 부수적인 처리 시간이 생략된다는 이점이 있음
+
+  - 따라서 빈번히 호출되면서 빠른 실행이 요구될 경우에 인라인 함수를 선언하면 성능 개선에 도움이 됨
+
+- __단, 인라인 함수로 선언한다고 해서 무조건 인라인 함수로 번역되지는 않음__
+
+  - 함수가 너무 큰 경우
+  - 재귀 호출(Recursive Call)을 하는 경우
+  - 프로그램 내에서 해당 함수에 대한 포인터를 사용하는 경우
+
+- 인라인 함수 예시
+
+  ```c++
+  //인라인 함수 선언(두 수를 서로 바꾸는 로직을 수행)
+  inline void inlineFunc(int &x, int &y){
+      int temp = x;
+     	x = y;
+      y = temp;
+  }
+  
+  int main(){
+      int a,b;
+      cin >> a >> b;
+      if(a<b) inlineFunc(a,b); //a<b일 경우 두 수를 서로 바꿔줌
+      return 0;
+  }
+  ```
+
+<br>
+
+## 5. 클래스와 객체(1)
+
+### 5-1. 객체지향 프로그래밍의 개념
+
+- __객체(Object)__ : 소프트웨어에서 현실세계에 존재하는 대상들을 표현한 것
+  - 정해진 처리를 수행하게 됨(행위, 메소드, 멤버함수 등)
+  - 처리 과정에 따라 내부의 상태를 변화시킴(속성, 데이터 멤버)
+  - 다른 객체와 상호작용함(멤버함수 호출을 통한 메시지 전달)
+- __클래스(class)__ : 객체의 설계도로, 객체가 포함하게 될 속성과 메소드에 대한 정의를 포함함
+- __캡슐화(encapsulation)__ : 객체 내부의 상세 구현을 외부 사용자의 관점으로 부터 분리시킨 것
+  - 내부 구현에 대한 정보를 은닉하며 객체 외부에서는 공개된 인터페이스를 통해 객체를 사용하게 됨
+  - 따라서 캡슐화된 정보에 외부에서의 직접적인 접근이 불가능하기 때문에, 객체 내부의 유지보수가 용이해짐
+  - 캡슐화된 객체는 다른 곳에도 응용할 수 있기 때문에 재사용에도 용이
+- __상속__ : 자식 클래스는 부모 클래스의 속성을 상속받아, 부모 클래스의 특징을 가지면서 부가적인 속성을 추가해 사용할 수 있음
+  - 따라서 여러 클래스가 여러 속성을 공유할 경우, 공통적인 속성들을 부모클래스로 선언한 후 이를 상속받으면 더욱 효율적
+
+<br>
+
+### 5-2. 클래스의 선언과 객체의 정의
+
+-  __클래스__ : 객체의 설계도로 표현하고자 하는 대상의 메소드와 속성을 선언
+
+  - 속성은 객체의 상태를 표현하게 됨
+  - 메소드는 객체의 행위를 정의함
+
+- __클래스 선언 형식__
+
+  ```c++
+  class ClassName{
+      가시성_지시어_1:
+      	데이터 멤버 혹은 멤버함수 리스트;
+      가시성_지시어_2:
+      	데이터 멤버 혹은 멤버함수 리스트;
+  }
+  ```
+
+- __가시성 지시어__ : 클래스의 멤버가 공개되는 범위를 나타냄
+
+  - __`private`__ : 소속 클래스의 멤버함수와, 형제 클래스의 멤버함수 및 형제함수를 제외한 범위에 모두 비공개
+    - 디폴트 값이면서, 정보의 은닉을 위해 사용됨
+  - __`public`__ : 모든 범위에 공개
+    - 캡슐화 대상이 아닌, 외부에 공개할 인터페이스 선언에 사용됨
+  - __`protected`__ : 상속 관계인 클래스에만 공개함
+
+- 일반적인 클래스 선언 예시
+
+  - Counter.h : 클래스의 뼈대가 되는 헤더파일 정의
+
+  ```c++
+  class Counter{
+      private:
+      	int value;
+      public:
+      	void reset();
+      	void count();
+      	int getValue();
+  };
+  ```
+
+  - Counter.cpp : 클래스의 구체적인 멤버와 속성이 정의될 파일
+
+  ```c++
+  #include "Counter.h"
+  #include <iostream>
+  using namespace std;
+  
+  void Counter::reset(){
+      value = 0;
+  }
+  
+  void Counter::count(){
+      value++;
+  }
+  
+  int Counter::getValue(){
+  
+      return value;
+  }
+  ```
+
+  - main.cpp
+
+  ```c++
+  #include <iostream>
+  #include "Counter.h"
+  using namespace std;
+  
+  int main()
+  {
+      Counter counter;
+      counter.reset();
+      counter.count();
+      counter.count();
+      
+      //Counter 클래스의 value 멤버변수는 private이기 때문에 직접 접근할 수 없음
+      cout << "value : " << counter.getValue() << endl;
+  
+      return 0;
+  }
+  ```
+
+- 여기서 헤더파일이 중복으로 include된다면 이를 방지해야 함
+
+  - 예를 들어, 위의 예시에서 main.cpp에 Counter.h 헤더파일을 include하는 다른 AnotherCounter.h 헤더 파일을 include하는 경우를 생각해볼 수 있음
+  - 이럴 경우 컴파일할 때 선행처리로 Counter.h 에 해당하는 클래스 멤버를 선언한 후, AnotherCounter.h에 해당하는 클래스 멤버를 선언하면서 Counter.h를 또 다시 선언하는 중복 문제가 발생하게 되는 것
+  - __`#ifndef`__ , __`#define`__  , __`#endif`__ 패턴을 이용해서 중복 include를 방지할 수 있음
+    - __#ifndef__ : 특정 키워드가 정의되지 않았음을 확인
+    - __#endif__ : 정의된 경우에는 endif가 있는 블록까지의 코드를 무시하는 것
+
+  ```c++
+  #ifndef COUNTER_H_INCLUDED
+  #define COUNTER_H_INCLUDED
+  class Counter{
+      //...
+  };
+  #endif
+  ```
+
+  ```c++
+  #ifndef ANOTHERCOUNTER_H_INCLUDED
+  #define ANOTHERCOUNTER_H_INCLUDED
+  #include "Counter.h"
+  class AnotherCounter{
+      //...
+  };
+  #endif
+  ```
+
+  - 혹은 __`#pragma once`__ 선언을 통해, 헤더 파일을 한 번만 적용하도록 선언할 수도 있음
+
+  ```c++
+  #pragma once
+  class Counter{
+      //...
+  };
+  ```
+
+  ```c++
+  #pragma once
+  #include "Counter.h"
+  class AnotherCounter{
+      //...
+  };
+  ```
+
+- __`const`__ 키워드를 선언하면, 클래스 내에서 해당 데이터 멤버의 값은 수정할 수 없음
+
+  ```c++
+  class Counter{
+      private:
+      	const int value = 4; //value=4로 고정
+      public:
+      	void reset();
+      	void count();
+      	int getValue();
+  };
+  ```
+
+  ```c++
+  #include <iostream>
+  #include "Counter.h"
+  using namespace std;
+  
+  int main()
+  {
+      Counter counter;
+      counter.reset();//value값을 변경하려고 할 경우 오류 발생
+  	//...
+      return 0;
+  }
+  ```
+
+<br>
+
+### 5-3. 생성자(Constructor)
+
+- 객체의 생성 시점에 수행할 작업을 정의하는 멤버 함수
+
+- 매개변수를 통한 인수 전달이 가능하며, 여러개의 생성자를 정의할 수 있음
+
+- 클래스의 이름과 동일하며, 리턴값과 리턴 자료형이 존재하지 않음
+
+- 생성자는 public으로 선언해야 외부에서의 객체 생성이 가능해짐
+
+  ```c++
+  class ClassName{
+      //...
+      public:
+      	ClassName(parameters){
+              //...객체 생성시 수행할 작업 명시
+          }
+  }
+  ```
+
+- 5-2에서 사용한 Counter 클래스에 생성자를 적용해보기
+
+  ```c++
+  class Counter{
+      int value;
+      public:
+      	//생성자 선언, 최초 Counter 객체 생성시 value=1로 두고 시작하는 것
+      	Counter(){
+              value = 1;
+          }
+      	void reset(){
+              value = 0;
+          }
+      	void count(){
+              value++;
+          }
+      	int getValue(){
+              return value;
+          }
+  }
+  ```
+
+- __초기화 리스트__ : 생성자의 머리에 데이터 멤버를 초기화하는 값들을 나열한 것
+
+  - 데이터멤버이름{초기값} 의 형태를 사용
+
+  ```c++
+  class Counter{
+      int value;
+      public:
+      	Counter() : value{0} {
+              // value =0은 위에서 정의하고, 이후에 수행할 내용을 명시
+          }
+  }
+  ```
+
+<br>
+
+### 5-4. 소멸자(Destructor)
+
+- 객체의 소멸 시점에 수행할 작업을 정의하는 멤버 함수
+
+- 클래스 이름에 __`~`__ 를 붙여 선언하며, 생성자와 마찬가지로 리턴값을 명시하지 않음
+
+- 생성자와 달리 매개변수를 포함하지 않으며, 오버로딩 또한 불가능
+
+- 일반적으로 __`public`__ 으로 선언함
+
+- 만일 상속을 통해 자식 클래스를 정의하게 될 경우에는, __`virtual`__ 을 지정하여 가상함수가 되도록 하는 것이 좋음
+
+- 소멸자 사용 예시
+
+  - Person.h
+
+  ```c++
+  #ifndef PERSON_H_INCLUDED
+  #DEFINE PERSON_H_INCLUDED
+  class Person{
+      private:
+  	    char *name; //이름
+      	char *address; //주소
+      public :
+      	Person(const char *name, const char *address);
+      	~Person();
+      void print() const;
+      void changeAddress(const char *newAddress);
+  };
+  #endif 
+  ```
+
+  - Person.cpp
+
+  ```c++
+  #include <iostream>
+  #include <cstring>
+  #include "Person.h"
+  using namespace std;
+  
+  Person::Person(const char *name, const char *address){
+      this->name = new char[strlen(name)+1];
+      strcpy(this->name,name); //메모리 주소값 복사
+      this->address = new char[strlen(address)+1];
+      strcpy(this->address,address); //메모리 주소값 복사
+      cout << "Person 객체 생성(" << name << ")" << endl;
+  }
+  
+  //소멸자 선언
+  Person::~Person(){
+      cout << "Person 객체 제거(" << name << ")" << endl;
+      delete [] name; //메모리 반납
+      delete [] address; //메모리 반납
+  }
+  
+  void Person::pring() const{
+      cout << address << "에 사는 " << name " 입니다." <<endl;
+  }
+  
+  void Person::changeAddress(const char *newAddress){
+      
+      delete [] address;
+      address = new char[stren(newAddr)+1]; //새로운 메모리 공간 할당
+      strcpy(address,newAddress); //address에 새로운 메모리 주소값 복사
+  }
+  ```
+
+  - Main.cpp
+
+  ```c++
+  #include <iostream>
+  #include "Person.h"
+  using namespace std;
+  
+  int main(){
+      Person *p1 = new Person("김철수","서울특별시 광진구");
+      Person *p2 = new Person("김영희","서울특별시 광진구");
+      p1 -> print();
+      p2 -> pring();
+      cout << endl << "주소 변경 : ";
+      p2 -> changeAddress("서울특별시 송파구");
+      p2 -> print();
+      delete p1;
+      delete p2;
+      return 0;
+  }
+  ```
+
+<br>
+
+## 6. 클래스와 객체(2)
+
+### 6-1. 디폴트 생성자
+
+### 6-2. 복사 생성자
+
+### 6-3. 이동 생성자
+
+### 6-4. static 키워드
+
+
 
