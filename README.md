@@ -61,6 +61,7 @@
 ### Swift
 
 - [[2022-02-24] Struct, Class, Enum 차이](https://github.com/junu0516/mytil/blob/main/Swift/structAndclassAndEnum.md)
+- [[2022-02-28] Class의 성능을 높일 수 있는 방법들](https://github.com/junu0516/mytil/blob/main/Swift/classPerformance.md)
 
 ​    
 
