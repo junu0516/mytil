@@ -65,6 +65,8 @@
 - [[2022-03-02] Copy On Write의 동작방식](https://github.com/junu0516/mytil/blob/main/Swift/cow.md)
 - [[2022-03-07] 순열과 조합 코드로 구현해보기](https://github.com/junu0516/mytil/blob/main/Swift/math.md)
 
+- [[2022-03-08] Convenience Initializer](https://github.com/junu0516/mytil/blob/main/Swift/convenienceInit.md)
+
 ​    
 
 ### 기타
