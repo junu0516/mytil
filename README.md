@@ -67,6 +67,8 @@
 
 - [[2022-03-08] Convenience Initializer](https://github.com/junu0516/mytil/blob/main/Swift/convenienceInit.md)
 
+- [[2022-03-14] Delegate와 NotificationCenter 사용의 차이](https://github.com/junu0516/mytil/blob/main/Swift/delegate_notification.md)
+
 <br>
 
 ### 기타
@@ -74,4 +76,3 @@
 - [[2021-07-20] hex string을 pdf로 변환해서 웹에서 보기](https://github.com/junu0516/mytil/blob/main/etc/hex_to_pdf.md)
 
 - [[방통대 강의록 정리]C++ 프로그래밍](https://github.com/junu0516/mytil/blob/main/C%2B%2B/c%2B%2B.md)
-
