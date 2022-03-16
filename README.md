@@ -68,6 +68,7 @@
 - [[2022-03-08] Convenience Initializer](https://github.com/junu0516/mytil/blob/main/Swift/convenienceInit.md)
 
 - [[2022-03-14] Delegate와 NotificationCenter 사용의 차이](https://github.com/junu0516/mytil/blob/main/Swift/delegate_notification.md)
+- [[2022-03-16] MVC 패턴](https://github.com/junu0516/mytil/blob/main/Swift/mvc.md)
 
 <br>
 
