@@ -36,7 +36,7 @@
 
   (이미 구현된 많은 클래스가 해당 속성을 오버라이딩하고 있음)
 
-​    ![img](https://blog.kakaocdn.net/dn/Nf37T/btq9reobFgd/U5reaCRGKnibsje1iHD280/img.png)
+​    <img src="https://blog.kakaocdn.net/dn/Nf37T/btq9reobFgd/U5reaCRGKnibsje1iHD280/img.png" style="width:60%; align=center;"/>
 
 - 위의 그림에서 __`UITextField`__ 가 이벤트를 처리하지 않는다면, __`UIKit`__ 은 해당 요소의 부모클래스가 되는 __`UIView`__ 로 이벤트를 우선 전달하고, 루트가 되는 __`UIView`__ 를 소유하는 __`UIViewController`__ 를 거쳐 __`UIWindow`__ , __`UIApplication`__ , __`UIApplicationDelegate`__ 순서로 각 요소가 이벤트를 처리하지 않을 경우 다음 요소로 이벤트를 전달함
 - 결국 어느 한 요소에서 처리되지 않으면 상위로 넘기는 과정을 반복하는 것!
@@ -67,6 +67,9 @@ func hitTest(_ point: CGPoint,
 ```
 
 - 위의 메소드에서 __`point`__ 는 이벤트를 받는 쪽의 좌표 바운드를 의미하고, __`event`__ 는 발생한 이벤트를 의미하지만 만일 이벤트 발생 범위 바깥에서 이를 호출하고자 할 경우에는 nil로 둠
+
+  - 만일 터치된 위치의 바운드값 바깥의 서브 뷰인 경우에는 무시됨
+  - 혹은 __`clipToBounds`__ 속성값을 false로 둔 경우에는 서브 뷰가 터치 범위에 들어와도 hitTest의 리턴값으로 뷰가 반환되지 않음
 
 - __`hitTest`__ 는 뷰 계층에서 현재 뷰의 각 서브 뷰의  __`point`__ 메소드 호출을 통해 어떤 서브 뷰가 터치 이벤트를 다음으로 받을 지를 결정하며, 아래와 같은 서브 뷰는 무시됨
 
