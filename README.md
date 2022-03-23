@@ -16,7 +16,7 @@
 
 - [[2022-03-22] Responder Chain과 First Responder의 역할](https://github.com/junu0516/mytil/blob/main/Swift/responderChain.md)
 
-
+- [[2022-03-23] KVO의 개념과 장,단점](https://github.com/junu0516/mytil/blob/main/Swift/kvo.md)
 
 ​    
 
