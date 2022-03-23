@@ -1,64 +1,8 @@
 # TIL(Today I Learned) 
 
-> 1. 중요하다고 생각되는 새로운 CS 지식을 하루에 하나씩 정해놓고 공부
-> 2. 혹은, 업무중에 얻게 된 노하우나 코딩하면서 발견한 눈여겨볼 만한 오류 해결 과정을 정리
-> 3. 나중에 언제든 꺼내서 볼 수 있도록, 정리는 최대한 보기 좋게 할 것
-> 4. 이전에 공부한 내용을 단순히 보충한 것은 TIL로 간주하지 말 것
 
 
-
-### 운영체제
-
-- [[2021-07-10] 프로세스와 스레드](https://github.com/junu0516/mytil/blob/main/Operating_System/프로세스와_스레드.md)
-- [[2021-07-24] 프로세스의 교착상태](https://github.com/junu0516/mytil/blob/main/Operating_System/교착상태.md)
-
-<br>
-
-### 네트워크
-
-- [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
-- [[2021-06-22] 쿠키와 세션](https://github.com/junu0516/mytil/blob/main/Network/쿠키와_세션.md)
-- [[2021-06-23] http 메시지](https://github.com/junu0516/mytil/blob/main/Network/Http메시지.md)
-- [[2021-06-30] 웹소켓 통신의 개념](https://github.com/junu0516/mytil/blob/main/Network/웹소켓_통신.md)
-- [[2021-07-01] 웹서버와 웹어플리케이션서버](https://github.com/junu0516/mytil/blob/main/Network/WS와WAS.md)
-- [[2021-07-03] TCP/IP 4계층-1](https://github.com/junu0516/mytil/blob/main/Network/TCP_IP_4계층.md)
-- [[2021-07-05] TCP/IP 4계층-2](https://github.com/junu0516/mytil/blob/main/Network/TCP_IP_4계층2.md)
-- [[2021-07-14]Ajax 통신과 JSON](https://github.com/junu0516/mytil/blob/main/Network/Ajax_JSON.md)
-- [[2021-07-15] JWT 토큰 기반 인증/인가](https://github.com/junu0516/mytil/blob/main/Network/JWT.md)
-
-..
-
-### Java
-
-- [[2021-06-25] JVM의 구조와 동작](https://github.com/junu0516/mytil/blob/main/Java/JVM의_구조와_동작.md)
-- [[2021-06-28] Java의 GC의 동작](https://github.com/junu0516/mytil/blob/main/Java/Java의_GC의_동작.md)
-- [[2021-06-29] synchronized 키워드의 역할](https://github.com/junu0516/mytil/blob/main/Java/synchronized.md)
-- [[2021-07-11] fork/join framework](https://github.com/junu0516/mytil/blob/main/Java/fork_join_framework.md)
-- [[2021-07-17] 자바 Servlet의 개념](https://github.com/junu0516/mytil/blob/main/Java/servlet.md)    
-- [[2021-08-18]자바 Stream](https://github.com/junu0516/mytil/blob/main/Java/stream.md)
-
-<br>
-
-### Spring
-
-- [[2021-06-18] 스프링 DI와 IoC](https://github.com/junu0516/mytil/blob/main/Spring/스프링에서의_DI와_IoC.md)
-- [[2021-06-19] 스프링 MVC의 동작구조](https://github.com/junu0516/mytil/blob/main/Spring/Spring_MVC%EC%9D%98_%EB%8F%99%EC%9E%91%EA%B5%AC%EC%A1%B0.md)
-- [[2021-06-21] 스프링 Security의 동작구조](https://github.com/junu0516/mytil/blob/main/Spring/Spring_Security_의_동작구조.md)
-- [[2021-07-22] UserDetailsService를 원하는 방식대로 수정하기](https://github.com/junu0516/mytil/blob/main/Spring/CustomUserDetailsService.md)
-- [[2021-07-04] 스프링 Scheduler](https://github.com/junu0516/mytil/blob/main/Spring/Spring_Scheduler.md)
-
-<br>
-
-### Javascript & Front-End
-
-- [[2021-08-29] Browser 구조 간단히 알아보기](https://github.com/junu0516/mytil/blob/main/Javascript/browser.md)
-- [[2021-08-30] DOM, CSSOM, RenderTree](https://github.com/junu0516/mytil/blob/main/Javascript/DOM.md)
-- [[2021-09-07]Event 간단히 알아보기](https://github.com/junu0516/mytil/blob/main/Javascript/event.md)
-- [[2021-09-22]자바스크립트 함수 호출 및 메모리 구조](https://github.com/junu0516/mytil/blob/main/Javascript/function.md)
-
-<br>
-
-### Swift
+### 2021년
 
 - [[2022-02-24] Struct, Class, Enum 차이](https://github.com/junu0516/mytil/blob/main/Swift/structAndclassAndEnum.md)
 - [[2022-02-28] Class의 성능을 높일 수 있는 방법들](https://github.com/junu0516/mytil/blob/main/Swift/classPerformance.md)
@@ -72,10 +16,39 @@
 
 - [[2022-03-22] Responder Chain과 First Responder의 역할](https://github.com/junu0516/mytil/blob/main/Swift/responderChain.md)
 
-<br>
 
-### 기타
 
+​    
+
+### 2020년
+
+- [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
+- [[2021-06-18] 스프링 DI와 IoC](https://github.com/junu0516/mytil/blob/main/Spring/스프링에서의_DI와_IoC.md)
+- [[2021-06-19] 스프링 MVC의 동작구조](https://github.com/junu0516/mytil/blob/main/Spring/Spring_MVC%EC%9D%98_%EB%8F%99%EC%9E%91%EA%B5%AC%EC%A1%B0.md)
+- [[2021-06-21] 스프링 Security의 동작구조](https://github.com/junu0516/mytil/blob/main/Spring/Spring_Security_의_동작구조.md)
+- [[2021-06-22] 쿠키와 세션](https://github.com/junu0516/mytil/blob/main/Network/쿠키와_세션.md)
+- [[2021-06-23] http 메시지](https://github.com/junu0516/mytil/blob/main/Network/Http메시지.md)
+- [[2021-06-25] JVM의 구조와 동작](https://github.com/junu0516/mytil/blob/main/Java/JVM의_구조와_동작.md)
+- [[2021-06-28] Java의 GC의 동작](https://github.com/junu0516/mytil/blob/main/Java/Java의_GC의_동작.md)
+- [[2021-06-29] synchronized 키워드의 역할](https://github.com/junu0516/mytil/blob/main/Java/synchronized.md)
+- [[2021-06-30] 웹소켓 통신의 개념](https://github.com/junu0516/mytil/blob/main/Network/웹소켓_통신.md)
+- [[2021-07-01] 웹서버와 웹어플리케이션서버](https://github.com/junu0516/mytil/blob/main/Network/WS와WAS.md)
+- [[2021-07-03] TCP/IP 4계층-1](https://github.com/junu0516/mytil/blob/main/Network/TCP_IP_4계층.md)
+- [[2021-07-04] 스프링 Scheduler](https://github.com/junu0516/mytil/blob/main/Spring/Spring_Scheduler.md)
+- [[2021-07-05] TCP/IP 4계층-2](https://github.com/junu0516/mytil/blob/main/Network/TCP_IP_4계층2.md)
+- [[2021-07-10] 프로세스와 스레드](https://github.com/junu0516/mytil/blob/main/Operating_System/프로세스와_스레드.md)
+- [[2021-07-11] fork/join framework](https://github.com/junu0516/mytil/blob/main/Java/fork_join_framework.md)
+- [[2021-07-14]Ajax 통신과 JSON](https://github.com/junu0516/mytil/blob/main/Network/Ajax_JSON.md)
+- [[2021-07-15] JWT 토큰 기반 인증/인가](https://github.com/junu0516/mytil/blob/main/Network/JWT.md)
+
+- [[2021-07-17] 자바 Servlet의 개념](https://github.com/junu0516/mytil/blob/main/Java/servlet.md)    
 - [[2021-07-20] hex string을 pdf로 변환해서 웹에서 보기](https://github.com/junu0516/mytil/blob/main/etc/hex_to_pdf.md)
+- [[2021-07-22] UserDetailsService를 원하는 방식대로 수정하기](https://github.com/junu0516/mytil/blob/main/Spring/CustomUserDetailsService.md)
+- [[2021-07-24] 프로세스의 교착상태](https://github.com/junu0516/mytil/blob/main/Operating_System/교착상태.md)
 
-- [[방통대 강의록 정리]C++ 프로그래밍](https://github.com/junu0516/mytil/blob/main/C%2B%2B/c%2B%2B.md)
+- [[2021-08-18]자바 Stream](https://github.com/junu0516/mytil/blob/main/Java/stream.md)
+
+- [[2021-08-29] Browser 구조 간단히 알아보기](https://github.com/junu0516/mytil/blob/main/Javascript/browser.md)
+- [[2021-08-30] DOM, CSSOM, RenderTree](https://github.com/junu0516/mytil/blob/main/Javascript/DOM.md)
+- [[2021-09-07]Event 간단히 알아보기](https://github.com/junu0516/mytil/blob/main/Javascript/event.md)
+- [[2021-09-22]자바스크립트 함수 호출 및 메모리 구조](https://github.com/junu0516/mytil/blob/main/Javascript/function.md)
