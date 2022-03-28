@@ -18,6 +18,8 @@
 
 - [[2022-03-23] KVO의 개념과 장,단점](https://github.com/junu0516/mytil/blob/main/Swift/kvo.md)
 
+- [[2022-03-28] OOP와 POP의 차이](https://github.com/junu0516/mytil/blob/main/Swift/oop_pop.md)
+
 ​    
 
 ### 2020년
