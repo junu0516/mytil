@@ -20,6 +20,8 @@
 
 - [[2022-03-28] OOP와 POP의 차이](https://github.com/junu0516/mytil/blob/main/Swift/oop_pop.md)
 
+- [[2022-03-29] ARC의 동작, 옵셔널](https://github.com/junu0516/mytil/blob/main/Swift/optional_arc.md)
+
 ​    
 
 ### 2020년
