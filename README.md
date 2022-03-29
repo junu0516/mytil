@@ -2,7 +2,7 @@
 
 
 
-### 2021년
+### 2022년
 
 - [[2022-02-24] Struct, Class, Enum 차이](https://github.com/junu0516/mytil/blob/main/Swift/structAndclassAndEnum.md)
 - [[2022-02-28] Class의 성능을 높일 수 있는 방법들](https://github.com/junu0516/mytil/blob/main/Swift/classPerformance.md)
@@ -24,7 +24,7 @@
 
 ​    
 
-### 2020년
+### 2021년
 
 - [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
 - [[2021-06-18] 스프링 DI와 IoC](https://github.com/junu0516/mytil/blob/main/Spring/스프링에서의_DI와_IoC.md)
