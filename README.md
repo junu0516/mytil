@@ -22,7 +22,9 @@
 
 - [[2022-03-29] ARC의 동작, 옵셔널](https://github.com/junu0516/mytil/blob/main/Swift/optional_arc.md)
 
-​    
+- [[2022-03-30] Equatable, Comparable, Hashable](https://github.com/junu0516/mytil/blob/main/Swift/20220330.md)
+
+   
 
 ### 2021년
 
