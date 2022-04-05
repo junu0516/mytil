@@ -25,8 +25,7 @@
 - [[2022-03-30] Equatable, Comparable, Hashable](https://github.com/junu0516/mytil/blob/main/Swift/20220330.md)
 
 - [[2022-04-04] Synchronous & Asynchronous](https://github.com/junu0516/mytil/blob/main/Swift/20220404.md)
-
-   
+- [[2022-04-05] HTTP&HTTPS 프로토콜 관련 간단한 내용 정리](https://github.com/junu0516/mytil/blob/main/Swift/20220405.md)
 
 ### 2021년
 
