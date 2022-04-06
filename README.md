@@ -26,6 +26,7 @@
 
 - [[2022-04-04] Synchronous & Asynchronous](https://github.com/junu0516/mytil/blob/main/Swift/20220404.md)
 - [[2022-04-05] HTTP&HTTPS 프로토콜 관련 간단한 내용 정리](https://github.com/junu0516/mytil/blob/main/Swift/20220405.md)
+- [[2022-04-06] Swift에서 JSON 파싱하기](https://github.com/junu0516/mytil/blob/main/Swift/20220406.md)
 
 ### 2021년
 
