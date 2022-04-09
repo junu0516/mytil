@@ -30,6 +30,8 @@
 
 - [[2022-04-07] Swift Protocol](https://github.com/junu0516/mytil/blob/main/Swift/20220407.md)
 
+- [[2022-04-08] Hashable 채택을 위해 Equtable 채택이 필요한 이유](https://github.com/junu0516/mytil/blob/main/Swift/20220408.md)
+
 ### 2021년
 
 - [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
