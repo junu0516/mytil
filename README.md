@@ -36,6 +36,8 @@
 
 - [[2022-04-12] 운영체제 질문 나올 만한 개념들 간단히 정리](https://github.com/junu0516/mytil/blob/main/Swift/20220412.md)
 
+- [[2022-04-13]  Swift Generic 간단한 정리](https://github.com/junu0516/mytil/blob/main/Swift/20220413.md)
+
 ### 2021년
 
 - [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
