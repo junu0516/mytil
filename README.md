@@ -41,6 +41,7 @@
 - [[2022-04-18] DTO와 Entity 객체의 역할에 대한 고민](https://github.com/junu0516/mytil/blob/main/Swift/20220418.md)
 
 - [[2022-04-22] Anti Singleton Pattern](https://github.com/junu0516/mytil/blob/main/Swift/20220422.md)
+- [[2022-04-25] 동시성 및 병렬성 개념과 GCD](https://github.com/junu0516/mytil/blob/main/Swift/20220425.md)
 
 ### 2021년
 
