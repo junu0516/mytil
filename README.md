@@ -43,6 +43,7 @@
 - [[2022-04-22] Anti Singleton Pattern](https://github.com/junu0516/mytil/blob/main/Swift/20220422.md)
 - [[2022-04-25] 동시성 및 병렬성 개념과 GCD](https://github.com/junu0516/mytil/blob/main/Swift/20220425.md)
 - [[2022-04-26] Strong&Weak, Static&Dynamic](https://github.com/junu0516/mytil/blob/main/Swift/20220426.md)
+- [[2022-05-05] 캐싱에 대한 간략한 정리](https://github.com/junu0516/mytil/blob/main/Swift/20220505.md)
 
 ### 2021년
 
