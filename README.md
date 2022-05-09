@@ -45,6 +45,7 @@
 - [[2022-04-26] Strong&Weak, Static&Dynamic](https://github.com/junu0516/mytil/blob/main/Swift/20220426.md)
 - [[2022-05-05] 캐싱에 대한 간략한 정리](https://github.com/junu0516/mytil/blob/main/Swift/20220505.md)
 - [[2022-05-09] Swift Closure](https://github.com/junu0516/mytil/blob/main/Swift/20220509.md)
+- [[2022-05-10] 프로세스와 스레드, 동시성과 병렬성 개념, GCD 사용 등 학습한 내용 총정리](https://github.com/junu0516/mytil/blob/main/Swift/20220510.md)
 
 ### 2021년
 
