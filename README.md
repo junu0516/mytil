@@ -47,6 +47,7 @@
 - [[2022-05-09] Swift Closure](https://github.com/junu0516/mytil/blob/main/Swift/20220509.md)
 - [[2022-05-10] 프로세스와 스레드, 동시성과 병렬성 개념, GCD 사용 등 학습한 내용 총정리](https://github.com/junu0516/mytil/blob/main/Swift/20220510.md)
 - [[2022-05-11] MVC to MVVM](https://github.com/junu0516/mytil/blob/main/Swift/20220511.md)
+- [[2022-05-15] DispatchSemaphore 사용과 교착상태 발생](https://github.com/junu0516/mytil/blob/main/Swift/20220515.md)
 
 ### 2021년
 
