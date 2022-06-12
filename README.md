@@ -51,6 +51,8 @@
 
 - [[2022-05-16] Swift로 Heap 구현하기](https://github.com/junu0516/mytil/blob/main/Swift/20220516.md)
 
+- [[2022-06-12] 가상메모리 개념 정리](https://github.com/junu0516/mytil/blob/main/Swift/20220612.md)
+
 ### 2021년
 
 - [[2021-06-17] https 통신과 SSL](https://github.com/junu0516/mytil/blob/main/Network/Https%20%ED%86%B5%EC%8B%A0.md)
